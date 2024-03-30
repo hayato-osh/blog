@@ -13,7 +13,8 @@
 		"lint:text": "textlint .",
 		"fix": "run-p fix:*",
 		"fix:biome": "biome format . --write",
-		"fix:text": "textlint . --fix"
+		"fix:text": "textlint . --fix",
+		"prepare": "husky"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.5.10",
@@ -23,6 +24,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.6.2",
 		"@textlint/textlint-plugin-markdown": "^14.0.4",
+		"husky": "^9.0.11",
 		"npm-run-all2": "^6.1.2",
 		"textlint": "^14.0.4",
 		"textlint-filter-rule-comments": "^1.2.2",
