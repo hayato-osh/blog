@@ -1,0 +1,15 @@
+---
+import { Footer } from "./Footer";
+import { Header } from "./Header";
+---
+<html lang="ja" class="h-full">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="h-full max-w-screen-md mx-auto px-4">
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>
