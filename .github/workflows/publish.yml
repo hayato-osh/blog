@@ -11,7 +11,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Run a build step here if your project requires
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Cache npm directory
+        uses: actions/cache@v3
+        with:
+          # CIでキャッシュするディレクトリやファイルのパス
+          path: ~/.npm
+          # キャッシュを保存・復元する際のキー
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          # キーで指定したキャッシュがヒットしなかった際に代理として使用されるキー
+          restore-keys: ${{ runner.os }}-npm-
+
+      - name: Install node modules
+        run: npm ci
+
+      - name: Build app
+        run: npm run build
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
