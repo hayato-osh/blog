@@ -27,7 +27,7 @@
 		"typescript": "^5.4.3"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.6.2",
+		"@biomejs/biome": "1.6.4",
 		"@textlint/textlint-plugin-markdown": "^14.0.4",
 		"@types/react": "^18.2.74",
 		"@types/react-dom": "^18.2.23",
