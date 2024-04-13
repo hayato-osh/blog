@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+	post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+---
+<article>
+  <h1 class="text-lg font-bold">{post.data.title}</h1>
+  <div>
+    <span>作成日：{post.data.createdAt}</span>
+    <span>更新日：{post.data.updatedAt}</span>
+  </div>
+  <div>
+    {post.data.tags.map((tag) => <span>#{tag}</span>)}
+  </div>
+  <slot />
+</article>
