@@ -7,8 +7,23 @@ import Header from "@/components/Header.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta charset="UTF-8" />
+
+    <!-- dark mode -->
+    <script>
+			if (
+				localStorage.getItem('dark-mode') === 'true' ||
+				(!('dark-mode' in localStorage) &&
+					window.matchMedia('(prefers-color-scheme: dark)').matches)
+			) {
+				localStorage.setItem('dark-mode', 'true');
+				document.querySelector('html')?.classList.add('dark');
+			} else {
+				localStorage.setItem('dark-mode', 'false');
+				document.querySelector('html')?.classList.remove('dark');
+			}
+		</script>
   </head>
-  <body class="h-full max-w-screen-md mx-auto px-4">
+  <body class="h-full max-w-screen-md mx-auto px-4 bg-neutral-100 text-neutral-950 dark:bg-neutral-800 dark:text-neutral-100">
     <Header />
     <slot />
     <Footer />
