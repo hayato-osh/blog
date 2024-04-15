@@ -1,0 +1,16 @@
+---
+import GlobalLayout from "@/layouts/GlobalLayout.astro";
+import { getTags } from "@/utils/getTags";
+
+const tags = await getTags();
+---
+<GlobalLayout>
+  <ul class="grid gap-2">
+    {Array.from(tags).map(([key, value]) => (
+      <li class="grid gap-1">
+        <a href={`/tags/${key}`} class="underline text-xl">{key}</a>
+        <span class="text-sm">{value.length} posts</span>
+      </li>
+    ))}
+  </ul>
+</GlobalLayout>
