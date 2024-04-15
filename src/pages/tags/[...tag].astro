@@ -1,0 +1,28 @@
+---
+import GlobalLayout from "@/layouts/GlobalLayout.astro";
+import { getTags } from "@/utils/getTags";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+
+export const getStaticPaths = (async () => {
+	const tags = await getTags();
+	return Array.from(tags).map(([key, posts]) => ({
+		params: { tag: key },
+		props: { posts },
+	}));
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+<GlobalLayout>
+  <p>{tag} 一覧</p>
+  <ul class="grid gap-2">
+    {posts.map((post) => (
+      <li class="grid gap-1">
+        <a href={`/posts/${post.slug}`} class="underline text-xl">{post.data.title}</a>
+      </li>
+    ))}
+  </ul>
+</GlobalLayout>
