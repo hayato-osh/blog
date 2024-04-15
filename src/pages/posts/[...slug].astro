@@ -17,7 +17,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
-<GlobalLayout>
+<GlobalLayout title={entry.data.title} desc={entry.data.description}>
 	<Post post={entry}>
   	<Content />
 	</Post>

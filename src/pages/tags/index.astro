@@ -1,10 +1,11 @@
 ---
 import GlobalLayout from "@/layouts/GlobalLayout.astro";
+import { generateTitle } from "@/utils/generateTitle";
 import { getTags } from "@/utils/getTags";
 
 const tags = await getTags();
 ---
-<GlobalLayout>
+<GlobalLayout title={generateTitle('タグ一覧')}>
   <ul class="grid gap-2">
     {Array.from(tags).map(([key, value]) => (
       <li class="grid gap-1">
