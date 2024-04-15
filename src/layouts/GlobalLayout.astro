@@ -2,12 +2,26 @@
 import { ViewTransitions } from "astro:transitions";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
+import { config } from "@/config";
+import { SEO } from "astro-seo";
+
+interface Props {
+	title: string;
+	desc?: string | undefined;
+}
+
+const { title, desc } = Astro.props;
 ---
 <html lang="ja" class="h-full">
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta charset="UTF-8" />
+
+    <SEO
+      charset="utf-8"
+      title={title}
+      description={desc ?? config.description}
+    />
 
     <ViewTransitions />
 

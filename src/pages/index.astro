@@ -1,11 +1,12 @@
 ---
 import GlobalLayout from "@/layouts/GlobalLayout.astro";
+import { generateTitle } from "@/utils/generateTitle";
 import { getPosts } from "@/utils/getPosts";
 
 const posts = await getPosts();
 ---
 
-<GlobalLayout>
+<GlobalLayout title={generateTitle('ホーム')}>
 	<main>
 		<ul>
 			{posts.map(post => (

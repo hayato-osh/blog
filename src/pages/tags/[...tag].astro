@@ -1,5 +1,6 @@
 ---
 import GlobalLayout from "@/layouts/GlobalLayout.astro";
+import { generateTitle } from "@/utils/generateTitle";
 import { getTags } from "@/utils/getTags";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 
@@ -16,7 +17,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
-<GlobalLayout>
+<GlobalLayout title={generateTitle(tag, 'タグ一覧')}>
   <p>{tag} 一覧</p>
   <ul class="grid gap-2">
     {posts.map((post) => (

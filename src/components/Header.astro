@@ -1,9 +1,13 @@
 ---
+import { config } from "@/config";
 import ThemeIcon from "./ThemeIcon.astro";
 ---
-<header class="h-8 flex items-center justify-between">
-  <nav>
-    <a href="/tags">tags</a>
-  </nav>
-  <ThemeIcon />
+<header class="h-12 flex items-center justify-between">
+  <a href="/" class="font-bold">{config.website}</a>
+  <div class="grid grid-cols-[1fr_max-content] items-center gap-2 sm:gap-4">
+    <nav>
+      <a href="/tags" class="underline">tags</a>
+    </nav>
+    <ThemeIcon />
+  </div>
 </header>
