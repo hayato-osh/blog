@@ -1,10 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import GlobalLayout from "@/layouts/GlobalLayout.astro";
+import { getPosts } from "@/utils/getPosts";
 
-const posts = (await getCollection("posts")).sort(
-	(a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime(),
-);
+const posts = await getPosts();
 ---
 
 <GlobalLayout>
