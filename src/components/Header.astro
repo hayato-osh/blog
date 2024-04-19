@@ -3,10 +3,11 @@ import { config } from "@/config";
 import ThemeIcon from "./ThemeIcon.astro";
 ---
 <header class="h-12 flex items-center justify-between">
-  <a href="/" class="font-bold">{config.website}</a>
+  <a href="/" class="font-bold">{config.title}</a>
   <div class="grid grid-cols-[1fr_max-content] items-center gap-2 sm:gap-4">
-    <nav>
+    <nav class="grid grid-flow-col gap-3">
       <a href="/tags" class="underline">tags</a>
+      <a href="/rss.xml" class="underline">rss</a>
     </nav>
     <ThemeIcon />
   </div>
