@@ -1,18 +1,23 @@
 ---
+import { formatDate } from "@/utils/formatDate";
+
 interface Props {
 	post: Post;
 }
 
 const { post } = Astro.props;
+
+const createdAt = formatDate(post.data.createdAt);
+const updatedAt = formatDate(post.data.updatedAt);
 ---
 <article class="prose dark:prose-invert prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg">
   <h1>{post.data.title}</h1>
-  <div>
-    <span>作成日：{post.data.createdAt}</span>
-    <span>更新日：{post.data.updatedAt}</span>
+  <div class="grid grid-cols-[max-content_max-content] gap-3">
+    <span>作成日:<time datetime={createdAt}>{createdAt}</time></span>
+    <span>更新日:<time datetime={updatedAt} />{updatedAt}</time></span>
   </div>
-  <div>
-    {post.data.tags.map((tag) => <span>#{tag}</span>)}
+  <div class="flex gap-x-2 flex-wrap">
+    {post.data.tags.map((tag) => <a href={`/tags/${tag}`}>#{tag}</a>)}
   </div>
   <slot />
 </article>
