@@ -6,6 +6,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: config.website,
-  integrations: [tailwind(), sitemap()]
+	site: config.website,
+	integrations: [tailwind(), sitemap()],
 });
