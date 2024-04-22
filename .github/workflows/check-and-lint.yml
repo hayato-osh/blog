@@ -41,6 +41,10 @@ jobs:
       - run: echo '${{ toJSON(steps.node_modules_cache_id.outputs) }}'
       - if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
         run: npm install
+
+      - name: Build app
+        run: npm run build
+
       - name: Run type-check
         run: npm run type-check
 
