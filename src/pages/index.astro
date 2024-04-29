@@ -8,11 +8,11 @@ const posts = await getPosts();
 ---
 
 <GlobalLayout title={generateTitle('ホーム')}>
-	<main>
+	<div class="grid gap-8">
 		{posts.map(post => (
 			<Post post={post}>
-				<p class='mt-1 text-sm line-clamp-3'>{post.data.description}</p>
+				<p class='text-sm line-clamp-3'>{post.data.description}</p>
 			</Post>
 		))}
-	</main>
+	</div>
 </GlobalLayout>

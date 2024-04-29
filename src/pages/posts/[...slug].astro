@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Post from "@/components/Post.astro";
 import GlobalLayout from "@/layouts/GlobalLayout.astro";
+import PostLayout from "@/layouts/PostLayout.astro";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 
 export const getStaticPaths = (async () => {
@@ -18,7 +19,9 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 <GlobalLayout title={entry.data.title} desc={entry.data.description}>
-	<Post post={entry}>
-  	<Content />
-	</Post>
+	<PostLayout>
+		<Post post={entry}>
+			<Content />
+		</Post>
+	</PostLayout>
 </GlobalLayout>
