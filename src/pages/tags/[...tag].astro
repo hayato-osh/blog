@@ -1,4 +1,6 @@
 ---
+import Heading from "@/components/Heading.astro";
+import Post from "@/components/Post.astro";
 import GlobalLayout from "@/layouts/GlobalLayout.astro";
 import { generateTitle } from "@/utils/generateTitle";
 import { getTags } from "@/utils/getTags";
@@ -18,12 +20,12 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 <GlobalLayout title={generateTitle(tag, 'タグ一覧')}>
-  <p>{tag} 一覧</p>
-  <ul class="grid gap-2">
-    {posts.map((post) => (
-      <li class="grid gap-1">
-        <a href={`/posts/${post.slug}`} class="underline text-xl">{post.data.title}</a>
-      </li>
+  <Heading class="mb-8">{tag} 一覧</Heading>
+  <div class="grid gap-8">
+    {posts.map(post => (
+      <Post post={post} heading="h2">
+        <p class='mt-1 text-sm line-clamp-3'>{post.data.description}</p>
+      </Post>
     ))}
-  </ul>
+  </div>
 </GlobalLayout>

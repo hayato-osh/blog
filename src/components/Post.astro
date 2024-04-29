@@ -1,23 +1,23 @@
 ---
 import { formatDate } from "@/utils/formatDate";
+import Heading from "./Heading.astro";
 
 interface Props {
 	post: Post;
+	heading?: "h1" | "h2";
 }
 
-const { post } = Astro.props;
+const { heading, post } = Astro.props;
 
 const createdAt = formatDate(post.data.createdAt);
-const updatedAt = formatDate(post.data.updatedAt);
 ---
-<article class="prose dark:prose-invert prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg">
-  <h1>{post.data.title}</h1>
-  <div class="grid grid-cols-[max-content_max-content] gap-3">
+<article class="grid gap-1">
+  <a href={`/posts/${post.slug}`}><Heading as={heading} class="underline">{post.data.title}</Heading></a>
+  <div class="grid grid-cols-[max-content_max-content] gap-4 text-sm">
     <span>作成日:<time datetime={createdAt}>{createdAt}</time></span>
-    <span>更新日:<time datetime={updatedAt} />{updatedAt}</time></span>
-  </div>
-  <div class="flex gap-x-2 flex-wrap">
-    {post.data.tags.map((tag) => <a href={`/tags/${tag}`}>#{tag}</a>)}
+    <div class="flex gap-x-2 flex-wrap text-sm">
+      {post.data.tags.map((tag) => <a href={`/tags/${tag}`} class="underline">#{tag}</a>)}
+    </div>
   </div>
   <slot />
 </article>

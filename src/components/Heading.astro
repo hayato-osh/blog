@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"h1" | "h2" | "h3"> {
+	as?: "h1" | "h2" | "h3" | undefined;
+	class?: string;
+}
+
+const { as: H = "h1", class: propClass } = Astro.props;
+
+const headingStyle =
+	H === "h1" ? "text-2xl" : H === "h2" ? "text-xl" : "text-lg";
+---
+<H class:list={['my-0 font-bold', headingStyle, propClass]}>
+  <slot />
+</H>
