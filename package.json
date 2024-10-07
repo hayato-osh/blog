@@ -30,7 +30,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
 		"@tailwindcss/typography": "^0.5.15",
-		"@textlint/textlint-plugin-markdown": "^14.0.4",
+		"@textlint/textlint-plugin-markdown": "^14.2.1",
 		"husky": "^9.1.4",
 		"npm-run-all2": "^6.2.2",
 		"scaffdog": "^4.0.0",
